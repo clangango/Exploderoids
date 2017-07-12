@@ -82,7 +82,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SDL2-2.0.5\include;$(SolutionDir)Dependencies\SDL2_image-2.0.1\include;$(SolutionDir)Dependencies\SDL2_mixer-2.0.1\include;$(SolutionDir)Dependencies\SDL2_ttf-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL2-2.0.5\lib\x86;$(SolutionDir)Dependencies\SDL2_image-2.0.1\lib\x86;$(SolutionDir)Dependencies\SDL2_mixer-2.0.1\lib\x86;$(SolutionDir)Dependencies\SDL2_ttf-2.0.14\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -98,10 +104,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SDL2-2.0.5\include;$(SolutionDir)Dependencies\SDL2_image-2.0.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL2-2.0.5\lib\x86;$(SolutionDir)Dependencies\SDL2_image-2.0.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -118,10 +128,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp" />
+    <None Include="bin\Debug\libFLAC-8.dll" />
+    <None Include="bin\Debug\libfreetype-6.dll" />
+    <None Include="bin\Debug\libjpeg-9.dll" />
+    <None Include="bin\Debug\libmodplug-1.dll" />
+    <None Include="bin\Debug\libogg-0.dll" />
+    <None Include="bin\Debug\libpng16-16.dll" />
+    <None Include="bin\Debug\libtiff-5.dll" />
+    <None Include="bin\Debug\libvorbis-0.dll" />
+    <None Include="bin\Debug\libvorbisfile-3.dll" />
+    <None Include="bin\Debug\libwebp-4.dll" />
+    <None Include="bin\Debug\SDL2.dll" />
+    <None Include="bin\Debug\SDL2_image.dll" />
+    <None Include="bin\Debug\SDL2_mixer.dll" />
+    <None Include="bin\Debug\SDL2_ttf.dll" />
+    <None Include="bin\Debug\smpeg2.dll" />
+    <None Include="bin\Debug\zlib1.dll" />
+    <None Include="libjpeg-9.dll" />
+    <None Include="libpng16-16.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libwebp-4.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
