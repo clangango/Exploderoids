@@ -55,7 +55,19 @@ void Player::Update()
 		RotateLeft();
 	if (rotate_right_)
 		RotateRight();
+
+	float oldX = velocity.x;
+	float oldY = velocity.y;
+
 	velocity.Add(acceleration);
+
+	float magnitude = sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
+	if (magnitude > PLAYER_MAX_SPEED)
+	{
+		velocity.x = oldX;
+		velocity.y = oldY;
+	}
+
 	position.Add(velocity);
 
 	if (position.y < 0.0)
