@@ -144,16 +144,21 @@
     <None Include="bin\Debug\SDL2_ttf.dll" />
     <None Include="bin\Debug\smpeg2.dll" />
     <None Include="bin\Debug\zlib1.dll" />
-    <None Include="libjpeg-9.dll" />
-    <None Include="libpng16-16.dll" />
-    <None Include="libtiff-5.dll" />
-    <None Include="libwebp-4.dll" />
-    <None Include="SDL2.dll" />
-    <None Include="SDL2_image.dll" />
-    <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\timer.cpp" />
+    <ClCompile Include="src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\vec2.h" />
+    <ClInclude Include="src\player.h" />
+    <ClInclude Include="src\timer.h" />
+    <ClInclude Include="src\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
