@@ -146,6 +146,7 @@
     <None Include="bin\Debug\zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\asteroid.cpp" />
     <ClCompile Include="src\bullet.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\asteroid.h" />
     <ClInclude Include="src\bullet.h" />
     <ClInclude Include="src\config.h" />
     <ClInclude Include="src\game.h" />

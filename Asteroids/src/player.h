@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "vec2.h"
-#include "bullet.h"
 
 class Player
 {

@@ -53,10 +53,8 @@ void Player::Update()
 		Thrust();
 	if (!thrust_)
 	{
-		acceleration.x = 0.0;
-		acceleration.y = 0.0;
-		velocity.x *= 0.975;
-		velocity.y *= 0.975;
+		acceleration.Multiply(0.0f);
+		velocity.Multiply(0.975f);
 	}
 	if (rotate_left_)
 		RotateLeft();

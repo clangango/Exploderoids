@@ -15,4 +15,6 @@ const int PLAYER_FIRE_DELAY = 300;
 const int BULLET_SPEED = 20.0f;
 const unsigned int BULLET_FLIGHT_TIME = 500;
 
+const unsigned int ASTEROID_BASE_SPEED = 8;
+
 #endif

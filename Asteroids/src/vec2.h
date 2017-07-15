@@ -19,6 +19,13 @@ struct Vec2
 		return *this;
 	}
 
+	Vec2 & Multiply(const float scalar)
+	{
+		x *= scalar;
+		y *= scalar;
+		return *this;
+	}
+
 	float Magnitude()
 	{
 		return sqrt(x * x + y * y);
