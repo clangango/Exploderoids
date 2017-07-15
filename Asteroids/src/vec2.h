@@ -1,6 +1,8 @@
 #ifndef ASTEROIDS_VEC2_H_
 #define ASTEROIDS_VEC2_H_
 
+#pragma warning (disable : 4244)
+
 #include <cmath>
 
 struct Vec2

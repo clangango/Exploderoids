@@ -59,6 +59,13 @@ void Game::HandleInput()
 				player.rotate_left_ = true;
 			if (event_.key.keysym.sym == SDLK_RIGHT)
 				player.rotate_right_ = true;
+			if (event_.key.keysym.sym == SDLK_SPACE)
+			{
+				if (player.Fire())
+				{
+					bullets.push_back(Bullet{player.GetPosition().x, player.GetPosition().y, player.GetAngle()});
+				}
+			}
 			break;
 		case SDL_KEYUP:
 			if (event_.key.keysym.sym == SDLK_UP)
@@ -80,6 +87,18 @@ void Game::EarlyUpdate()
 void Game::Update()
 {
 	player.Update();
+
+	std::vector<Bullet>::iterator it = bullets.begin();
+	while (it != bullets.end())
+	{
+		if (it->ShouldEnd())  
+			it = bullets.erase(it);
+		else
+		{
+			it->Update();
+			++it;
+		}
+	}
 }
 
 void Game::LateUpdate()
@@ -91,5 +110,11 @@ void Game::Render()
 {
 	window_->Clear();
 	player.Render(window_->GetRenderer());
+
+	for (unsigned int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i].Render(window_->GetRenderer());
+	}
+
 	window_->Present();
 }

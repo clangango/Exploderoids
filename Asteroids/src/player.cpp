@@ -14,6 +14,7 @@ Player::Player(double x, double y)
 	thrust_ = false;
 	rotate_left_ = false;
 	rotate_right_ = false;
+	time_last_fired_ = SDL_GetTicks();
 }
 
 Player::~Player()
@@ -36,8 +37,14 @@ void Player::Thrust()
 	acceleration.y = 5.0 * -cos(angle * (M_PI / 180.0f));
 }
 
-void Player::Fire()
+bool Player::Fire()
 {
+	if ((SDL_GetTicks() - time_last_fired_) > PLAYER_FIRE_DELAY)
+	{
+		time_last_fired_ = SDL_GetTicks();
+		return true;
+	}
+	return false;
 }
 
 void Player::Update()
@@ -77,7 +84,7 @@ void Player::Update()
 	if (position.x < 0.0)
 		position.x = SCREEN_WIDTH;
 	if (position.x > SCREEN_WIDTH)
-		position.x = 0.0;
+		position.x = 0.0;	
 }
 
 void Player::Render(SDL_Renderer * renderer)
@@ -116,4 +123,9 @@ void Player::Render(SDL_Renderer * renderer)
 Vec2 Player::GetPosition()
 {
 	return position;
+}
+
+float Player::GetAngle()
+{
+	return angle;
 }

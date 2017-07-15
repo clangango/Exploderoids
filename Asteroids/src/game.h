@@ -1,9 +1,12 @@
 #ifndef _ASTEROIDS_GAME_H_
 #define _ASTEROIDS_GAME_H_
 
+#include <vector>
+
 #include "window.h"
 #include "timer.h"
 #include "player.h"
+#include "bullet.h"
 
 class Game
 {
@@ -25,6 +28,8 @@ private:
 	Timer * timer_;
 
 	Player player;
+
+	std::vector<Bullet> bullets;
 };
 
 #endif

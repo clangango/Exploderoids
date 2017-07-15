@@ -2,8 +2,10 @@
 #define ASTEROIDS_PLAYER_H_
 
 #include <SDL.h>
+#include <vector>
 
 #include "vec2.h"
+#include "bullet.h"
 
 class Player
 {
@@ -15,12 +17,13 @@ public:
 	void RotateRight();
 	void RotateLeft();
 	void Thrust();
-	void Fire();
+	bool Fire();
 
 	void Update();
 	void Render(SDL_Renderer * renderer);
 
 	Vec2 GetPosition();
+	float GetAngle();
 
 	bool thrust_;
 	bool rotate_right_;
@@ -32,6 +35,8 @@ private:
 	Vec2 acceleration;
 
 	double angle;
+
+	int time_last_fired_;
 };
 
 #endif
