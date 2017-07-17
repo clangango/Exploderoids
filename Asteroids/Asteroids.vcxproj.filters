@@ -80,5 +80,8 @@
     <ClInclude Include="src\asteroid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\game_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

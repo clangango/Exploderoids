@@ -159,6 +159,7 @@
     <ClInclude Include="src\bullet.h" />
     <ClInclude Include="src\config.h" />
     <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\game_object.h" />
     <ClInclude Include="src\vec2.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\timer.h" />

@@ -8,8 +8,8 @@
 Player::Player(double x, double y)
 {
 	position = { x, y };
-	velocity = {};
-	acceleration = {};
+	velocity = { 0.0, 0.0 };
+	acceleration = { 0.0, 0.0 };
 	angle = 0.0;
 	thrust_ = false;
 	rotate_left_ = false;
@@ -54,7 +54,7 @@ void Player::Update()
 	if (!thrust_)
 	{
 		acceleration.Multiply(0.0f);
-		velocity.Multiply(0.975f);
+		velocity.Multiply(PLAYER_DRAG);
 	}
 	if (rotate_left_)
 		RotateLeft();

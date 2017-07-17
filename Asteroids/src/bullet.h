@@ -3,9 +3,11 @@
 
 #include <SDL.h>
 
+#include "game_object.h"
 #include "vec2.h"
+#include "asteroid.h"
 
-class Bullet
+class Bullet : public GameObject
 {
 public:
 	Bullet() {};
@@ -15,16 +17,11 @@ public:
 	void Update();
 	void Render(SDL_Renderer * renderer);
 
-	Vec2 GetPosition();
-
 	bool ShouldEnd();
+	bool CollidesWith(GameObject * object);
+	bool CollidesWithAsteroid(Asteroid asteroid);
 
 private:
-	Vec2 position;
-	Vec2 velocity;
-	Vec2 acceleration;
-
-	double angle;
 	unsigned int flight_time;
 	unsigned int start_time;
 };

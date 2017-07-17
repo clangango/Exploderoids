@@ -1,6 +1,7 @@
 #include "bullet.h"
 
 #include <cmath>
+#include <iostream>
 
 #include <SDL.h>
 
@@ -8,10 +9,11 @@
 
 Bullet::Bullet(double x, double y, double angle)
 {
-	position = { x, y };
+	position.x = x;
+	position.y = y;
+	angle = angle;
 	velocity.x = BULLET_SPEED * sin(angle * M_PI / 180.0f);
 	velocity.y = BULLET_SPEED * -cos(angle * M_PI / 180.0f);
-	acceleration = {};
 	flight_time = BULLET_FLIGHT_TIME;
 	start_time = SDL_GetTicks();
 }
@@ -37,13 +39,23 @@ void Bullet::Update()
 void Bullet::Render(SDL_Renderer * renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-	SDL_RenderDrawPoint(renderer, position.x, position.y);
+	SDL_RenderSetScale(renderer, 2, 2);
+	SDL_RenderDrawPoint(renderer, position.x / 2, position.y / 2);
+	SDL_RenderSetScale(renderer, 1, 1);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 }
 
-Vec2 Bullet::GetPosition()
+bool Bullet::CollidesWith(GameObject * object)
 {
-	return Vec2();
+	return this->position.Distance(object->position) <= ASTEROID_BASE_RADIUS;
+}
+
+bool Bullet::CollidesWithAsteroid(Asteroid asteroid)
+{
+	//float distance = this->position.Distance(asteroid.GetPosition());
+	//int size = asteroid.GetSize();
+	//std::cout << distance << ', ' << size << std::endl;
+	return (this->position.Distance(asteroid.position) <= (ASTEROID_BASE_RADIUS / asteroid.GetSize()));
 }
 
 bool Bullet::ShouldEnd()

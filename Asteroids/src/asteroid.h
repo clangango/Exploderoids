@@ -5,25 +5,23 @@
 #include <vector>
 
 #include "vec2.h"
+#include "game_object.h"
 
-class Asteroid
+class Asteroid : public GameObject
 {
 public:
 	Asteroid() {};
-	Asteroid(double x, double y, float angle);
+	Asteroid(double x, double y, double angle, int size);
 	~Asteroid();
 
 	void Update();
 	void Render(SDL_Renderer * renderer);
+	bool CollidesWith(GameObject * object);
 
-	Vec2 GetPosition();
+	int GetSize();
 
 private:
-	Vec2 position;
-	Vec2 velocity;
-	Vec2 acceleration;
-
-	double angle;
+	int size;
 };
 
 #endif

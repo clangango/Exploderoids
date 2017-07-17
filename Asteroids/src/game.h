@@ -7,6 +7,8 @@
 #include "timer.h"
 #include "player.h"
 #include "bullet.h"
+#include "asteroid.h"
+#include "game_object.h"
 
 class Game
 {
@@ -30,6 +32,7 @@ private:
 	Player player;
 
 	std::vector<Bullet> bullets;
+	std::vector<Asteroid> asteroids;
 };
 
 #endif
