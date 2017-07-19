@@ -16,6 +16,7 @@ Bullet::Bullet(double x, double y, double angle)
 	velocity.y = BULLET_SPEED * -cos(angle * M_PI / 180.0f);
 	flight_time = BULLET_FLIGHT_TIME;
 	start_time = SDL_GetTicks();
+	hit_target = false;
 }
 
 Bullet::~Bullet()
@@ -45,6 +46,11 @@ void Bullet::Render(SDL_Renderer * renderer)
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 }
 
+void Bullet::HitAndShouldDie()
+{
+	hit_target = true;
+}
+
 bool Bullet::CollidesWith(GameObject * object)
 {
 	return this->position.Distance(object->position) <= ASTEROID_BASE_RADIUS;
@@ -60,5 +66,5 @@ bool Bullet::CollidesWithAsteroid(Asteroid asteroid)
 
 bool Bullet::ShouldEnd()
 {
-	return (SDL_GetTicks() - start_time) > flight_time;
+	return ((SDL_GetTicks() - start_time) > flight_time) || hit_target;
 }

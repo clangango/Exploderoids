@@ -16,6 +16,7 @@ public:
 
 	void Update();
 	void Render(SDL_Renderer * renderer);
+	void HitAndShouldDie();
 
 	bool ShouldEnd();
 	bool CollidesWith(GameObject * object);
@@ -24,6 +25,7 @@ public:
 private:
 	unsigned int flight_time;
 	unsigned int start_time;
+	bool hit_target;
 };
 
 #endif

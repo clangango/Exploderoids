@@ -115,22 +115,30 @@ void Game::Update()
 	{
 		for (int j = 0; j < asteroids.size(); j++)
 		{
-			if (bullets[i].CollidesWithAsteroid(asteroids[j]))
+			if (bullets[i].CollidesWith(&asteroids[j]))
 			{
-				std::cout << "We got one at " << asteroids[j].position.x << ", " << asteroids[j].position.y << std::endl;
 				if (asteroids[j].GetSize() < 3)
 				{
-					std::cout << "Making babies" << std::endl;
-					asteroids.push_back(Asteroid{ asteroids[j].position.x, asteroids[j].position.y, 120.0, asteroids[j].GetSize() + 1 });
-					asteroids.push_back(Asteroid{ asteroids[j].position.x, asteroids[j].position.y, 60.0, asteroids[j].GetSize() + 1 });
+					asteroids.push_back(Asteroid{ asteroids[j].position.x, asteroids[j].position.y, 45.0, asteroids[j].GetSize() + 1 });
+					asteroids.push_back(Asteroid{ asteroids[j].position.x, asteroids[j].position.y, 135.0, asteroids[j].GetSize() + 1 });
 					asteroids.erase(asteroids.begin() + j);
 				}
 				else
 				{
 					asteroids.erase(asteroids.begin() + j);
 				}
-				
+				bullets[i].HitAndShouldDie();
 			}
+		}
+	}
+
+	for (int i = 0; i < asteroids.size(); i++)
+	{
+		if (player.CollidesWith(&asteroids[i]))
+		{
+			std::cout << "Ouch" << std::endl;
+			asteroids.erase(asteroids.begin() + i);
+			break;
 		}
 	}
 }

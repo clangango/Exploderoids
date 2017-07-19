@@ -127,3 +127,8 @@ float Player::GetAngle()
 {
 	return angle;
 }
+
+bool Player::CollidesWith(GameObject * object)
+{
+	return this->position.Distance(object->position) <= ASTEROID_BASE_RADIUS;
+}

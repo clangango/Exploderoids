@@ -5,8 +5,9 @@
 #include <vector>
 
 #include "vec2.h"
+#include "game_object.h"
 
-class Player
+class Player : public GameObject
 {
 public:
 	Player() {};
@@ -24,17 +25,13 @@ public:
 	Vec2 GetPosition();
 	float GetAngle();
 
+	bool CollidesWith(GameObject * object);
+
 	bool thrust_;
 	bool rotate_right_;
 	bool rotate_left_;
 
 private:
-	Vec2 position;
-	Vec2 velocity;
-	Vec2 acceleration;
-
-	double angle;
-
 	int time_last_fired_;
 };
 
